@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  VayDosh
+
+  Created by Adam Miziev on 5/2/23.
+  
+*/
+
+"CFBundleDisplayName" = "ВайДош";
+"CFBundleName" = "ВайДош";

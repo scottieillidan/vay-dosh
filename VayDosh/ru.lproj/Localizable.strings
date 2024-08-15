@@ -1,0 +1,81 @@
+/* 
+  Localizable.strings
+  VayDosh
+
+  Created by Adam Miziev on 5/2/23.
+  
+*/
+
+// IngushAlphabetView()
+
+"Cyrillic" = "Кириллица";
+"Latin" = "Латиница";
+"Ingush Alphabet" = "Ингушский Алфавит";
+
+// Home()
+
+"No Results" = "Нет результатов";
+"Welcome!" = "Добро Пожаловать!";
+"There were no results for" = "Ничего не найдено по запросу";
+"Try a new search." = "Попробуйте снова.";
+"(VayDosh)" = "(ВайДош)";
+"VayDosh" = "ВайДош";
+"VayDosh: " = "ВайДош: ";
+"Dictionary:" = "Словарь:";
+"Search" = "Поиск";
+"Show translate" = "Показать перевод";
+"RU" = "РУ";
+"RU: " = "РУ: ";
+"ING" = "ИНГ";
+"ING: " = "ИНГ: ";
+
+// DetailView()
+
+// IconChooser()
+
+"App Icon" = "Иконка Приложения";
+"Light" = "Светлая";
+"Dark" = "Темная";
+"Jeirah" = "Джейрах";
+"Ingush Flag" = "Ингушский Флаг";
+"Cartoon" = "Мульт";
+
+// MenuView()
+
+"Menu" = "Меню";
+"VayDosh Interface Language:" = "Язык интерфейса ВайДош";
+"English (US)" = "Английский (США)";
+"Russian" = "Русский";
+"Vocabulary" = "Словарь";
+"Composition" = "Состав";
+"Icon" = "Иконка";
+"Color Scheme:" = "Цветовая Схема:";
+"Auto" = "Авто";
+"Favorites" = "Избранное";
+"Appearance" = "Оформление";
+"About" = "О приложении";
+"Soon" = "Скоро";
+"Support" = "Поддержка";
+
+// FavoriteListView
+
+"No Favorites yet" = "В избранном пусто";
+"Add words using " = "Добавляйте слова с помощью ";
+
+// VocabularyView()
+
+"Code" = "Код";
+"Bibliographic Reference" = "Библиографическая Ссылка";
+"If you would like me to delete, edit, or add your own dictionary to the collection, contact me via:" = "Если вы хотите, чтобы я удалил, отредактировал или добавил ваш собственный словарь в коллекцию, свяжитесь со мной через:";
+"More" = "Подробнее";
+
+// InfoView()
+
+"Version:" = "Версия:";
+"© Adam Miziev" = "© Адам Мизиев";
+"Reference" = "Материалы";
+"Set of Ingush Dictionaries" = "Словарный свод Ингушского Языка";
+"Lottie Animations" = "Lottie Анимации";
+"Icon made by Freepik from Flaticon" = "Иконки, сделанные Freepik (Flaticon)";
+"Graphic Materials" = "Графические Материалы";
+"Privacy Policy" = "Политика Конфиденциальности";
