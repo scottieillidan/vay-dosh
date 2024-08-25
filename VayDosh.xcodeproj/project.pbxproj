@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		161D212D2C7A2F6E00C0F7FE /* KeyboardResponder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161D212C2C7A2F6E00C0F7FE /* KeyboardResponder.swift */; };
+		161D21302C7A316000C0F7FE /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161D212F2C7A316000C0F7FE /* TabBarItem.swift */; };
+		161D21332C7A31F200C0F7FE /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161D21322C7A31F200C0F7FE /* MainView.swift */; };
+		161D21352C7A324600C0F7FE /* CustomText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161D21342C7A324600C0F7FE /* CustomText.swift */; };
 		16766B6E2A5AAEF6009BE045 /* data.json in Resources */ = {isa = PBXBuildFile; fileRef = 16766B6D2A5AAEF6009BE045 /* data.json */; };
 		16882C572BE10AF000DB4AB6 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16882C562BE10AF000DB4AB6 /* LottieView.swift */; };
 		16BE613C2BA84D3D000A7577 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16BE613B2BA84D3D000A7577 /* CustomButton.swift */; };
@@ -46,6 +50,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		161D212C2C7A2F6E00C0F7FE /* KeyboardResponder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponder.swift; sourceTree = "<group>"; };
+		161D212F2C7A316000C0F7FE /* TabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
+		161D21322C7A31F200C0F7FE /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		161D21342C7A324600C0F7FE /* CustomText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomText.swift; sourceTree = "<group>"; };
 		165CAC732BE11A7100704530 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		16766B6D2A5AAEF6009BE045 /* data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = data.json; sourceTree = "<group>"; };
 		16882C562BE10AF000DB4AB6 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
@@ -99,6 +107,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		161D212B2C7A2F6000C0F7FE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				161D212C2C7A2F6E00C0F7FE /* KeyboardResponder.swift */,
+				161D21342C7A324600C0F7FE /* CustomText.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		161D212E2C7A313E00C0F7FE /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				161D212F2C7A316000C0F7FE /* TabBarItem.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		161D21312C7A31E600C0F7FE /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				161D21322C7A31F200C0F7FE /* MainView.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		16882C582BE10EB100DB4AB6 /* Customs */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +223,9 @@
 		4F6A2A1D2A0114D700D6BE85 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				161D21312C7A31E600C0F7FE /* Main */,
+				161D212E2C7A313E00C0F7FE /* Components */,
+				161D212B2C7A2F6000C0F7FE /* Resources */,
 				4FB02DBD2A27C5240064D48F /* Animations */,
 				4F7F16D02A17F9600001EAD0 /* Home */,
 				4F27E0C62A1B82560001E287 /* LaunchScreen */,
@@ -348,19 +384,23 @@
 				4FFE0B8F2A1758AA009C8E34 /* Localisation.swift in Sources */,
 				4F27E0C02A1B379F0001E287 /* InfoView.swift in Sources */,
 				4F6A2A212A01155A00D6BE85 /* JSONViewModel.swift in Sources */,
+				161D212D2C7A2F6E00C0F7FE /* KeyboardResponder.swift in Sources */,
 				16DA89292A6593EF0095A09B /* DisplayMode.swift in Sources */,
 				4F6A2A252A011A5400D6BE85 /* ListItemView.swift in Sources */,
 				4F6EE83E2A0143E00086955A /* IconModel.swift in Sources */,
+				161D21332C7A31F200C0F7FE /* MainView.swift in Sources */,
 				16E211FD2A5AAB4C00FFD66E /* VayDosh.xcdatamodeld in Sources */,
 				4F27E0C52A1B750E0001E287 /* LaunchScreenView.swift in Sources */,
 				16C18B842A68462D001769F6 /* LocalisationService.swift in Sources */,
 				4F8CA5492A07A2BB000DC61F /* FavoriteListView.swift in Sources */,
 				16E4F3472C4EA79D00D00917 /* File.swift in Sources */,
 				4F6A2A082A01142100D6BE85 /* VayDoshApp.swift in Sources */,
+				161D21352C7A324600C0F7FE /* CustomText.swift in Sources */,
 				16BE613C2BA84D3D000A7577 /* CustomButton.swift in Sources */,
 				4FE872E92A04E1AE00A5FB97 /* MenuView.swift in Sources */,
 				4F4621322A1C942B001BA5AC /* IngushAlphabetCLView.swift in Sources */,
 				4F6EE8412A0144480086955A /* IconChooser.swift in Sources */,
+				161D21302C7A316000C0F7FE /* TabBarItem.swift in Sources */,
 				16882C572BE10AF000DB4AB6 /* LottieView.swift in Sources */,
 				16DA89272A6587B20095A09B /* ShareSheetActivity.swift in Sources */,
 				4F6A2A0F2A01142100D6BE85 /* ContentView.swift in Sources */,

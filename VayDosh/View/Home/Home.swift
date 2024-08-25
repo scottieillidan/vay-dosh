@@ -14,6 +14,8 @@ struct Home: View {
     @AppStorage("language") private var language = 
     LocalizationService.shared.language
     
+    @StateObject private var keyboardResponder = KeyboardResponder()
+    
     @ObservedObject var jsonModel = JSONViewModel()
     
     @Environment(\.managedObjectContext) var context
@@ -97,7 +99,7 @@ struct Home: View {
                             Spacer()
                         }
                         .padding()
-                        if !randomWords.isEmpty {
+                        if !randomWords.isEmpty && !keyboardResponder.isKeyboardVisible {
                             HStack {
                                 Spacer()
                                 Button {
@@ -109,22 +111,11 @@ struct Home: View {
                                         if isShowTranslate {
                                             self.isShowTranslate.toggle()
                                         }
-                                        if buttonTapped != 35 {
-                                            buttonTapped += 1
-                                        }
-                                        if buttonTapped == 35 {
-                                            guard let currentScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
-                                                  return
-                                            }
-
-                                            SKStoreReviewController
-                                                .requestReview(in: currentScene)
-                                            buttonTapped = 0
-                                        }
                                     }
                                 } label: {
                                     Image(systemName: "dice.fill")
                                         .resizable()
+                                        .aspectRatio(contentMode: .fit)
                                         .frame(width: 35, height: 35)
                                 }
                             }
@@ -157,13 +148,13 @@ struct Home: View {
                         } else {
                             ScrollView(.vertical, showsIndicators: false) {
                                 LazyVStack {
-                                    ForEach(filteredResults.prefix(30), 
+                                    ForEach(filteredResults.prefix(35),
                                             id: \.self) { word in
                                         NavigationLink(destination: 
                                                         DetailView(loadedData:
                                                                     word)) {
                                             if word != 
-                                                filteredResults.prefix(30).last {
+                                                filteredResults.prefix(35).last {
                                                 VStack {
                                                     ListItemView(loadedData: word)
                                                     Divider()
