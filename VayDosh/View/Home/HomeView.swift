@@ -86,7 +86,9 @@ struct HomeView: View {
             .animation(.default, value: searchText)
             .animation(.default, value: filteredResults)
             .navigationBarTitleDisplayMode(.inline)
-            .searchable(text: $searchText, placement: .toolbar, prompt: "Search".localized(language))
+            .searchable(text: $searchText,
+                        placement: .navigationBarDrawer(displayMode: .always),
+                        prompt: "Search".localized(language))
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .onChange(of: searchText) { searchText in
