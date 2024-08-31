@@ -11,11 +11,11 @@ import SwiftUI
 struct VayDoshApp: App {
     @AppStorage("displayMode") var displayMode = DisplayMode.system
     let persistenceController = PersistenceController.shared
-
+    
     var body: some Scene {
         WindowGroup {
             LaunchScreenView()
-                .environment(\.managedObjectContext, 
+                .environment(\.managedObjectContext,
                               persistenceController.container.viewContext)
                 .onAppear {
                     displayMode.setAppDisplayMode()

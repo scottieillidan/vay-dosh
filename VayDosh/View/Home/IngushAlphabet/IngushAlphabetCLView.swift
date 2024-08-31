@@ -9,7 +9,7 @@ import SwiftUI
 
 struct IngushAlphabetCLView: View {
     
-    let alphabetCyrillic: [(character: String, transcription: String)] = [
+    private let alphabetCyrillic: [(character: String, transcription: String)] = [
         ("А", "а"),
         ("Аь", "аь"),
         ("Б", "бэ"),
@@ -57,7 +57,7 @@ struct IngushAlphabetCLView: View {
         ("Яь", "яь"),
         ("Ӏ", "'")
     ]
-    let alphabetLatin: [(character: String, transcription: String)] = [
+    private let alphabetLatin: [(character: String, transcription: String)] = [
         ("A", "ei"),
         ("Æ", "alæp"),
         ("B", "be"),
@@ -95,66 +95,18 @@ struct IngushAlphabetCLView: View {
     @State private var switchLatin = false
     
     var body: some View {
-        HStack {
-            Spacer()
-            SwitchAlphabetButton(switchAlphabet: $switchLatin, alphabet: "Latin")
+        VStack(alignment: .trailing) {
+            SwitchAlphabetButton(switchAlphabet: $switchLatin,
+                                 alphabet: "Latin")
+            .padding(.horizontal)
+            AlphabetView(alphabet: switchLatin ? alphabetLatin
+                         : alphabetCyrillic)
         }
-        .padding(.horizontal)
-        AlphabetView(alphabet: switchLatin ? alphabetLatin : alphabetCyrillic)
     }
 }
 
 struct IngushAlphabetCLView_Previews: PreviewProvider {
     static var previews: some View {
         IngushAlphabetCLView()
-    }
-}
-
-
-struct AlphabetView: View {
-    let alphabet: [(character: String, transcription: String)]
-    let columns = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
-    var body: some View {
-        LazyVGrid(columns: columns, spacing: 10) {
-            ForEach(0..<alphabet.count, id: \.self) { letter in
-                VStack {
-                    Text(alphabet[letter].character)
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .lineLimit(1)
-                        .frame(maxWidth: .infinity, maxHeight: .infinity)
-                    
-                    
-                    Text(alphabet[letter].transcription)
-                        .font(.subheadline)
-                        .lineLimit(1)
-                        .padding(.top, 5)
-                }
-                .padding(5)
-                .background()
-                .cornerRadius(20)
-            }
-        }
-        .padding()
-        .background(Color("SecondarySystemBG"))
-        .cornerRadius(40)
-    }
-}
-
-
-struct SwitchAlphabetButton: View {
-    @AppStorage("language") private var language = LocalizationService.shared.language
-    @Binding var switchAlphabet: Bool
-    var alphabet: String
-    var body: some View {
-        Button {
-            switchAlphabet.toggle()
-        } label: {
-            HStack {
-                Text(alphabet.localized(language))
-                    .font(.footnote)
-                Image(systemName: switchAlphabet ? "checkmark.circle.fill" : "circle")
-            }
-        }
     }
 }

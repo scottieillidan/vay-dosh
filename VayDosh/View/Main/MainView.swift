@@ -8,16 +8,12 @@
 import SwiftUI
 
 struct Mainview: View {
-    @StateObject private var model = AppIconModel()
     
     @StateObject private var keyboardResponder = KeyboardResponder()
     
+    @ObservedObject private var switchLang = SwitchLang()
+    
     @State private var selectedTab = "Search"
-    
-    @AppStorage("language") private var language =
-    LocalizationService.shared.language
-    
-    @ObservedObject private var buttonSwitch = SwitchLangModel()
     
     private var tabs: [String] = ["Search", "Favorites", "Menu"]
     
@@ -30,13 +26,12 @@ struct Mainview: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             TabView(selection: $selectedTab) {
-                Home()
-                    .environmentObject(buttonSwitch)
+                HomeView()
+                    .environmentObject(switchLang)
                     .tag(tabs[0])
-                FavoriteListView()
+                FavoriteWordsListView()
                     .tag(tabs[1])
                 MenuView()
-                    .environmentObject(model)
                     .tag(tabs[2])
             }
             if !keyboardResponder.isKeyboardVisible {
@@ -49,7 +44,7 @@ struct Mainview: View {
                     }
                 }
                 .padding(.vertical, 5)
-                .background(.whiteBlack)
+                .background(.background)
             }
         }
     }

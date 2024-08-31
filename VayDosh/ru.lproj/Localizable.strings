@@ -10,6 +10,7 @@
 
 "Cyrillic" = "Кириллица";
 "Latin" = "Латиница";
+"Latin | Cyrillic" = "Латиница | Кириллица";
 "Ingush Alphabet" = "Ингушский Алфавит";
 
 // Home()
@@ -60,7 +61,7 @@
 // FavoriteListView
 
 "No Favorites yet" = "В избранном пусто";
-"Add words using " = "Добавляйте слова с помощью ";
+"Add words using" = "Добавляйте слова с помощью";
 
 // VocabularyView()
 

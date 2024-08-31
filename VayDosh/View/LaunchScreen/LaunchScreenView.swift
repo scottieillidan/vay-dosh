@@ -23,7 +23,7 @@ struct LaunchScreenView: View {
                 .scaleEffect(size)
                 .opacity(opacity)
                 .onAppear {
-                    withAnimation(.easeInOut(duration: 0.55)) {
+                    withAnimation(.easeInOut(duration: 0.5)) {
                         self.size = 1.0
                         self.opacity = 1.0
                     }

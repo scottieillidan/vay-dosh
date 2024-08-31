@@ -10,12 +10,9 @@ import UIKit
 
 struct InfoView: View {
     
-    @State var shareText: ShareText?
+    @State private var shareText: ShareText?
     
-    @AppStorage("language") private var language = 
-    LocalizationService.shared.language
-    
-    let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] 
+    private let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"]
     as? String
     
     var body: some View {
@@ -24,99 +21,53 @@ struct InfoView: View {
         "document/d/1Acw-XZaRoO3vw2FTcwhijHmMtpGtizYuoVYRyVPGaVE"
         List {
             VStack(alignment: .leading) {
-                Text("VayDosh".localized(language))
-                    .fontWeight(.bold)
+                CustomText(text: "VayDosh", size: 20, weight: .bold)
                 HStack {
-                    Text("Version:".localized(language))
-                    Text(appVersion!)
+                    CustomText(text: "Version:", size: 16, color: .secondary)
+                    CustomText(text: appVersion!, size: 16, color: .secondary)
                 }
-                .font(.footnote)
-                .foregroundColor(.secondary)
                 HStack {
-                    Text("© MZA".localized(language))
+                    CustomText(text: "MZA", size: 18)
                     Spacer()
-                    Text("2024")
+                    Text(yearFormatter())
                 }
             }
             Section(content: {
-                Link(destination: URL(string: "https://ghalghay.github.io/")!) {
-                    HStack{
-                        Text("Set of Ingush Dictionaries".localized(language))
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                    }
-                }
+                CustomLinkView(url: "https://github.com/scottieillidan/vay-dosh",
+                               title: "GitHub")
+                CustomLinkView(url: "https://ghalghay.github.io/",
+                               title: "Set of Ingush Dictionaries")
             }, header: {
-                HStack {
-                    Image(systemName: "archivebox")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 20, height: 25)
-                        .foregroundColor(.accentColor)
-                    Text("Reference".localized(language))
-                }
+                SectionHeaderView(icon: "archivebox", section: "Reference")
             })
             Section(content: {
-                Link(destination: URL(string: "https://lottiefiles.com/")!) {
-                    HStack{
-                        Text("Lottie Animations".localized(language))
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                    }
-                }
-                .listRowSeparator(.hidden)
-                Link(destination: URL(string: "https://www.flaticon.com/")!) {
-                    HStack{
-                        Text("Icon made by Freepik from Flaticon".localized(
-                            language))
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                    }
-                }
+                CustomLinkView(url: "https://lottiefiles.com/",
+                               title: "Lottie Animations")
+                CustomLinkView(url: "https://www.flaticon.com/",
+                               title: "Icon made by Freepik from Flaticon")
             }, header: {
-                HStack {
-                    Image(systemName: "paintpalette")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .frame(width: 20, height: 25)
-                        .foregroundColor(.accentColor)
-                    Text("Graphic Materials".localized(language))
-                }
+                SectionHeaderView(icon: "paintpalette",
+                                  section: "Graphic Materials")
             })
             Section(content: {
-                Link(destination: URL(string: privacyPolicy)!) {
-                    HStack{
-                        Text("Privacy Policy".localized(language))
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                    }
-                }
+                CustomLinkView(url: privacyPolicy, title: "Privacy Policy")
+            }, header: {
+                SectionHeaderView(icon: "checkmark.seal", section: "")
             })
-        } // List
+        }
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                VStack {
-                    Button {
-                        shareText = ShareText(text:
-                                                "VayDosh: ".localized(language)
-                                              + VDLink)
-                    } label: {
-                        Image(systemName: "square.and.arrow.up")
-                    }
-                    
-                }
-                .sheet(item: $shareText) { shareText in
-                    ActivityView(text: shareText.text)
-                }
-                
+                ShareButton(shareText: $shareText,
+                            text: "VayDosh: " + VDLink)
             }
         }
+        .navigationTitle("")
         .navigationBarTitleDisplayMode(.inline)
     }
-}
-
-struct InfoView_Previews: PreviewProvider {
-    static var previews: some View {
-        InfoView()
+    
+    func yearFormatter() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "y"
+        return dateFormatter.string(from: Date())
     }
 }

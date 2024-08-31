@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct TabBarItem: View {
-    @AppStorage("language") private var language =
-    LocalizationService.shared.language
     
     @Binding var selectedTab: String
     
@@ -27,19 +25,16 @@ struct TabBarItem: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 25, height: 25)
-                    .foregroundStyle(.BW)
                 if(selectedTab == title) {
-                    Text(title.localized(language))
-                        .font(.footnote)
-                        .foregroundStyle(.BW)
+                    CustomText(text: title, size: 14, weight: .medium)
                 }
             }
             .padding(.horizontal)
             .padding(.vertical, 10)
-            .background(selectedTab == title ? .accent : .clear)
+            .background(selectedTab == title ? Color.accent : .clear)
             .clipShape(.capsule)
         })
+        .foregroundStyle(.primary)
         .disabled(selectedTab == title)
-        
     }
 }
