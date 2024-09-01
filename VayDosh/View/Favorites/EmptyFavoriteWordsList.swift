@@ -17,7 +17,7 @@ struct EmptyFavoriteWordsList: View {
                 LottieView(loopMode: .loop, animationName: "shining-stars")
                     .frame(height: 150)
             }
-            CustomText(text: "No Favorites yet", size: 30,
+            CustomText(text: "No Favorites yet", size: 28,
                        weight: .bold, textAlignment: .center)
             HStack {
                 CustomText(text: "Add words using", size: 18,

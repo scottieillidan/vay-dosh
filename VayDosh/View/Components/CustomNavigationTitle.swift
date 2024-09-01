@@ -10,6 +10,6 @@ import SwiftUI
 struct CustomNavigationTitle: View {
     var title: String
     var body: some View {
-        CustomText(text: title, size: 28, weight: .bold)
+        CustomText(text: title, size: 26, weight: .bold)
     }
 }

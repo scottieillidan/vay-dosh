@@ -92,31 +92,43 @@ struct HomeView: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .onChange(of: searchText) { searchText in
-            filterResults(searchText)
+            filterResults()
         }
     }
     
-    private func filterResults(_ searchText: String) {
+    private func filterResults() {
+        let languageKey = self.switchLang.switchLang ? "russian" : "ingush"
+        let results = self.switchLang.switchLang ? self.rusResults : self.ingResults
+        
         filterQueue.async {
-            let languageKey = self.switchLang.switchLang ? "russian" : "ingush"
-            let results = self.switchLang.switchLang ? self.rusResults : self.ingResults
+            let searchText = self.searchText.lowercased()
 
-            let startsWithPredicate = NSPredicate(format: "\(languageKey) BEGINSWITH[c] %@", searchText)
-            let containsPredicate = NSPredicate(format: "\(languageKey) CONTAINS[c] %@", searchText)
-            let compoundPredicate = NSCompoundPredicate(orPredicateWithSubpredicates: [startsWithPredicate, containsPredicate])
-
-            let filtered = results.filter { compoundPredicate.evaluate(with: $0) }
-
+            // Filter results
+            let filtered = results.filter { item in
+                if let value = item.value(forKey: languageKey) as? String {
+                    let lowercasedValue = value.lowercased()
+                    return lowercasedValue.hasPrefix(searchText) || lowercasedValue.contains(searchText)
+                }
+                return false
+            }
+            
+            // Sort results: items that start with the search text should come first
             let sortedFiltered = filtered.sorted { (item1, item2) in
-                let item1StartsWith = startsWithPredicate.evaluate(with: item1)
-                let item2StartsWith = startsWithPredicate.evaluate(with: item2)
-
-                if item1StartsWith && !item2StartsWith {
-                    return true
-                } else if !item1StartsWith && item2StartsWith {
+                guard let value1 = item1.value(forKey: languageKey) as? String,
+                      let value2 = item2.value(forKey: languageKey) as? String else {
                     return false
+                }
+                
+                let lowercasedValue1 = value1.lowercased()
+                let lowercasedValue2 = value2.lowercased()
+                
+                let item1StartsWith = lowercasedValue1.hasPrefix(searchText)
+                let item2StartsWith = lowercasedValue2.hasPrefix(searchText)
+                
+                if item1StartsWith != item2StartsWith {
+                    return item1StartsWith
                 } else {
-                    return (item1.value(forKey: languageKey) as? String ?? "") < (item2.value(forKey: languageKey) as? String ?? "")
+                    return lowercasedValue1 < lowercasedValue2
                 }
             }
 
@@ -125,6 +137,7 @@ struct HomeView: View {
             }
         }
     }
+
 
     
 }
