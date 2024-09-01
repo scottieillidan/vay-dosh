@@ -13,7 +13,7 @@ struct CustomText: View {
     LocalizationService.shared.language
     
     var text: String
-    var font: String = "Roboto"
+    var font: String = "Open Sans"
     var size: Double = 12
     var weight: Font.Weight = .regular
     var color: Color = .primary

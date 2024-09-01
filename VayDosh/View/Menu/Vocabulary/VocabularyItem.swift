@@ -15,6 +15,7 @@ struct VocabularyItem: View {
         HStack {
             CustomText(text: code, size: 13, color: .accentColor)
                 .frame(width: 50)
+                .padding(.leading, -10)
             Divider()
             CustomText(text: description, size: 18)
                 .lineLimit(6)

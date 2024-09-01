@@ -13,7 +13,7 @@ struct AlphabetGridItem: View {
     var body: some View {
         VStack(spacing: 10) {
             CustomText(text: character,
-                       size: 30, weight: .bold)
+                       size: 26, weight: .bold)
                 .lineLimit(1)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             CustomText(text: transcription, size: 14)

@@ -26,7 +26,7 @@ struct HomeWelcomeView: View {
                 VStack(alignment: .leading) {
                     CustomText(text: "ING", size: 13, weight: .black)
                     CustomText(text: randomWord?.ingush ??
-                               "Марш доаг1алда Шо!", size: 30, weight: .black)
+                               "Марш доаг1алда Шо!", size: 28, weight: .black)
                 }
                 ShowTranslationButton(isShowTranslate: $isShowTranslate, 
                                       word: randomWord?.russian)
