@@ -15,9 +15,8 @@ struct IconPicker: View {
         ("AppIcon", "Jeirah"),
         ("AppIcon-Dark", "Dark"),
         ("AppIcon-Light", "Light"),
-        ("AppIcon-2077", "2077"),
-        ("AppIcon-Cartoon", "Cartoon"),
-        ("AppIcon-IngushFlag", "Ingush Flag")
+        ("AppIcon-IngushFlag", "Ingush Flag"),
+        ("AppIcon-Gradient", "Gradient")
     ]
     
     var body: some View {
@@ -27,6 +26,7 @@ struct IconPicker: View {
                     .tag(icons[index].appIcon)
             }
         }
+        .pickerStyle(.menu)
         .onChange(of: activeAppIcon) { newValue in
             if(newValue == "AppIcon") {
                 UIApplication.shared.setAlternateIconName(nil)
